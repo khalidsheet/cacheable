@@ -1,6 +1,6 @@
 {
   "name": "@khalidsheet/cacheable",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple in-memory caching solution for Node.js, with a flexible design where you can define your own cache policies.",
   "main": "src/index.ts",
   "type": "module",

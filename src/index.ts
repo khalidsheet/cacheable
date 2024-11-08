@@ -1,2 +1,3 @@
 export * from "./interfaces/Cache";
-export * from "./adapters/MemoryCacheable";
+export * from "./adapters/AbstractCacheable";
+export * from "./factories/CacheFactory";
