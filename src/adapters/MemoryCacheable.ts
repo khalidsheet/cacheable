@@ -22,6 +22,13 @@ export default class MemoryCacheable implements Cache {
     return item.value;
   }
 
+  set<T>(key: string, value: T, ttl: number): void {
+    this.cache.set(key, {
+      value,
+      expiry: Date.now() + ttl,
+    });
+  }
+
   remember<T>(key: string, ttl: number, callback: () => T): T {
     const item = this.cache.get(key);
     if (item && item.expiry > Date.now()) {
@@ -35,13 +42,6 @@ export default class MemoryCacheable implements Cache {
     });
 
     return value;
-  }
-
-  set<T>(key: string, value: T, ttl: number): void {
-    this.cache.set(key, {
-      value,
-      expiry: Date.now() + ttl,
-    });
   }
 
   invalidate(key: string): void {
