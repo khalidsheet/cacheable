@@ -1,8 +1,8 @@
 {
   "name": "cacheable",
-  "version": "0.1.0",
-  "description": "",
-  "main": "dist/index.js",
+  "version": "0.2.0",
+  "description": "A simple in-memory caching solution for Node.js, with a flexible design where you can define your own cache policies.",
+  "main": "src/index.ts",
   "type": "module",
   "scripts": {
     "start": "node index.js",
@@ -10,8 +10,22 @@
     "build": "tsc",
     "watch": "tsc -w"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cache",
+    "cacheable",
+    "nodejs",
+    "node-cacheable",
+    "node-cache",
+    "node",
+    "extendable",
+    "express",
+    "express-cache",
+    "expressjs"
+  ],
+  "author": {
+    "name": "Khalid Sheet",
+    "email": "khalid.m.sheet@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.14",

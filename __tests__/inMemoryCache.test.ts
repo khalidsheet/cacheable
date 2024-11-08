@@ -55,7 +55,7 @@ describe("MemoryCacheable", () => {
   it("should clear the cache", () => {
     cache.set("key", "value", 1000);
     cache.clear();
-    expect(cache.get("key")).toBe;
+    expect(cache.get("key")).toBe(null);
   });
 
   it("should remember the cached value and cache it again if expired", (done) => {
