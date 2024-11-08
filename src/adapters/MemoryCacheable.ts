@@ -5,7 +5,7 @@ interface CacheItem {
   expiry: number;
 }
 
-export default class MemoryCacheable implements Cache {
+export default class InMemoryCacheable implements Cache {
   private cache: Map<string, CacheItem> = new Map();
 
   get<T>(key: string): T | null {
@@ -23,8 +23,20 @@ export default class MemoryCacheable implements Cache {
   }
 
   set<T>(key: string, value: T, ttl: number): void {
+    if (ttl <= 0) {
+      this.cache.delete(key);
+      return;
+    }
+
+    let cachedValue = value;
+
+    if (typeof value === "function") {
+      this.cache.delete(key);
+      cachedValue = value();
+    }
+
     this.cache.set(key, {
-      value,
+      value: cachedValue,
       expiry: Date.now() + ttl,
     });
   }
