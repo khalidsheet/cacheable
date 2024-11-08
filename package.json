@@ -1,9 +1,10 @@
 {
-  "name": "cacheable",
+  "name": "@khalidsheet/cacheable",
   "version": "0.2.0",
   "description": "A simple in-memory caching solution for Node.js, with a flexible design where you can define your own cache policies.",
   "main": "src/index.ts",
   "type": "module",
+  "private": false,
   "scripts": {
     "start": "node index.js",
     "test": "jest",
@@ -22,11 +23,12 @@
     "express-cache",
     "expressjs"
   ],
+  "homepage": "https://github.com/khalidsheet/cacheable",
   "author": {
     "name": "Khalid Sheet",
     "email": "khalid.m.sheet@gmail.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
