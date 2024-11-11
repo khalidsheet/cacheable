@@ -1,6 +1,6 @@
-import { AbstractCachable } from "../src/adapters/AbstractCacheable";
+import { Cacheable } from "../src/interfaces/Cache";
 
-export class TestDatabaseCacheFactory extends AbstractCachable {
+export class TestDatabaseCacheFactory implements Cacheable {
   get<T>(key: string): T | null {
     return null;
   }
@@ -13,8 +13,16 @@ export class TestDatabaseCacheFactory extends AbstractCachable {
     return callback();
   }
 
+  rememberForever<T>(key: string, callback: () => T): T {
+    return callback();
+  }
+
   invalidate(key: string): void {
     return;
+  }
+
+  has<T>(key: string): boolean {
+    return false;
   }
 
   clear(): void {

@@ -1,17 +1,14 @@
 import { CacheFactory } from "./../src/factories/CacheFactory";
-import { Cache } from "../src/interfaces/Cache";
+import { Cacheable } from "./../src/interfaces/Cache";
 import { TestDatabaseCacheFactory } from "../__mocks__/DatabaseFactory";
+import { InMemoryCacheable } from "../src/adapters/InMemoryCacheable";
 
 describe("MemoryCacheable", () => {
-  let cache: Cache;
+  let cache: Cacheable;
 
   beforeEach(() => {
     cache = CacheFactory.createCache();
   });
-
-  // afterEach(() => {
-  //   cache.clear();
-  // });
 
   it("should set and get a value", () => {
     cache.set("key", "value", 1000);
@@ -93,7 +90,28 @@ describe("MemoryCacheable", () => {
 
   it("should create a cache instance with a custom strategy", () => {
     const cacheStrategy = new TestDatabaseCacheFactory();
-    const cache = CacheFactory.createCache(cacheStrategy);
+    const cache = CacheFactory.createCache({
+      cacheStrategy: cacheStrategy,
+    });
     expect(cache).toBeInstanceOf(TestDatabaseCacheFactory);
+  });
+
+  it("should use a cache instance", () => {
+    const cacheStrategy = new TestDatabaseCacheFactory();
+    const cache = CacheFactory.use(cacheStrategy);
+    expect(cache).toBeInstanceOf(TestDatabaseCacheFactory);
+  });
+
+  it("should check if a key exists in the cache", () => {
+    cache.set("key", "value", 1000);
+    expect(cache.has("key")).toBe(true);
+    expect(cache.has("non-existent-key")).toBe(false);
+  });
+
+  it("should remember a value forever", () => {
+    const callback = jest.fn(() => "value");
+    expect(cache.rememberForever("key", callback)).toBe("value");
+    expect(callback).toHaveBeenCalledTimes(1);
+    expect(cache.get("key")).toBe("value");
   });
 });
