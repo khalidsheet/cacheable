@@ -1,2 +1,2 @@
-export * from "./interfaces/Cache";
-export * from "./factories/CacheFactory";
+export * from "./factories";
+export * from "./interfaces";
