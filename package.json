@@ -2,9 +2,9 @@
   "name": "@khalidsheet/cacheable",
   "version": "0.5.1",
   "description": "A simple in-memory caching solution for Node.js, with a flexible design where you can define your own cache policies.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "private": false,
   "scripts": {
     "start": "node index.js",
@@ -34,6 +34,7 @@
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3"
   }
